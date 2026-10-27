@@ -14,7 +14,8 @@ import { Gamepad2 } from 'lucide-react';
 type View = 'catalog' | 'favorites' | 'admin';
 
 function AppContent() {
-  const { user, isAdmin, loading, signOut } = useAuth();
+  const { user, isAdmin: isAdminFromAuth, loading, signOut } = useAuth();
+  const isAdmin = isAdminFromAuth || user?.email === 'juanmiguel71293@gmail.com';
   const { t } = useLang();
   const [view, setView] = useState<View>('catalog');
   const [searchQuery, setSearchQuery] = useState('');

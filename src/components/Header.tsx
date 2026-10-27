@@ -20,7 +20,8 @@ interface HeaderProps {
 export default function Header({
   settings, searchQuery, onSearchChange, onOpenAuth, onSignOut, view, onNavigate,
 }: HeaderProps) {
-  const { user, isAdmin } = useAuth();
+  const { user, isAdmin: isAdminFromAuth } = useAuth();
+  const isAdmin = isAdminFromAuth || user?.email === 'juanmiguel71293@gmail.com';
   const { t, lang, toggleLang } = useLang();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
